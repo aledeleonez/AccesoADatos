@@ -31,9 +31,19 @@ public class MainActivity extends AppCompatActivity {
 
         texto = (EditText) findViewById(R.id.text_Texto);
         textoEntrada = (TextView) findViewById(R.id.texto_entrada);
-        String[] files = fileList();
+    }
 
-        if(isFile(files, "datos.txt")){
+    public void openFile(View view){
+        String fileName = textoEntrada.getText().toString();
+        fileName=fileName.replace('/','-');
+        boolean found = false;
+        String[] files = fileList();
+        for (int i = 0; i < files.length; i++) {
+            if(fileName.equals(files[i])){
+                found = true;
+            }
+        }
+        if(found == true){
             try{
                 InputStreamReader file = new InputStreamReader(openFileInput("datos.txt"));
                 BufferedReader bufferedReader = new BufferedReader(file);
@@ -51,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else{
+            Toast.makeText(this, "No hay archivos con ese titulo", Toast.LENGTH_SHORT).show();
+            texto.setText("");
         }
-
 
     }
 
