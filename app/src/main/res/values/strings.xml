@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BDFichero</string>
+    <string name="guardar">Guardar</string>
+    <string name="hint">Escribe aqui el texto</string>
 </resources>
