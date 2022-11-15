@@ -1,7 +1,5 @@
 package com.example.bdfichero;
 
-import static com.example.bdfichero.R.id.text_entrada;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -22,7 +20,7 @@ import java.io.OutputStreamWriter;
 public class MainActivity extends AppCompatActivity {
 
     private EditText texto;
-    private TextView textoEntrada;
+    private EditText textoEntrada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         texto = (EditText) findViewById(R.id.text_Texto);
-        textoEntrada = (TextView) findViewById(R.id.texto_entrada);
+        textoEntrada = (EditText) findViewById(R.id.texto_entrada);
     }
 
     public void openFile(View view){
