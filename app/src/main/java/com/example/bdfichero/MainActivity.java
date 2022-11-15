@@ -2,13 +2,17 @@ package com.example.bdfichero;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,5 +56,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    public void saveText(View view){
+        try{
+            OutputStreamWriter file = new OutputStreamWriter(openFileOutput("datos.txt", Activity.MODE_PRIVATE));
+            file.write(texto.getText().toString());
+            file.flush();
+            file.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
