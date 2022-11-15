@@ -1,12 +1,17 @@
 package com.example.bdfichero;
 
+import static com.example.bdfichero.R.id.text_entrada;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,6 +22,7 @@ import java.io.OutputStreamWriter;
 public class MainActivity extends AppCompatActivity {
 
     private EditText texto;
+    private TextView textoEntrada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         texto = (EditText) findViewById(R.id.text_Texto);
+        textoEntrada = (TextView) findViewById(R.id.texto_entrada);
         String[] files = fileList();
 
         if(isFile(files, "datos.txt")){
@@ -59,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveText(View view){
+        String fileName = textoEntrada.getText().toString();
+        fileName=fileName.replace('/','-');
         try{
-            OutputStreamWriter file = new OutputStreamWriter(openFileOutput("datos.txt", Activity.MODE_PRIVATE));
+            OutputStreamWriter file = new OutputStreamWriter(openFileOutput(fileName, Activity.MODE_PRIVATE));
             file.write(texto.getText().toString());
             file.flush();
             file.close();
@@ -69,5 +78,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Toast.makeText(this, "Los datos fueron grabados", Toast.LENGTH_SHORT).show();
+        textoEntrada.setText("");
+        texto.setText("");
     }
 }

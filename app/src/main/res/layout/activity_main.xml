@@ -6,28 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/bot_guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="saveText"
-        android:text="@string/guardar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/text_Texto"
-        android:layout_width="412dp"
-        android:layout_height="679dp"
-        android:background="@android:color/darker_gray"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/hint"
-        android:inputType="textMultiLine"
-        android:textColorHint="#4E342E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bot_guardar" />
+        <TextView
+            android:id="@+id/texto_entrada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bot_guardar"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="saveText"
+                android:text="@string/guardar" />
+
+            <Button
+                android:id="@+id/but_abrir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/abrir" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/text_Texto"
+            android:layout_width="408dp"
+            android:layout_height="845dp"
+            android:background="@android:color/darker_gray"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/hint"
+            android:inputType="textMultiLine"
+            android:textColorHint="#4E342E" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
