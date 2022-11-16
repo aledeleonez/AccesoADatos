@@ -1,4 +1,4 @@
-package com.example.practicamysql;
+package com.example.appmysql;
 
 import org.junit.Test;
 

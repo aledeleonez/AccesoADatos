@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.practicamysql'
+    namespace 'com.example.appmysql'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.practicamysql"
+        applicationId "com.example.appmysql"
         minSdk 21
         targetSdk 32
         versionCode 1
