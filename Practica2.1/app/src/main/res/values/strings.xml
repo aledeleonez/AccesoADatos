@@ -6,4 +6,6 @@
     <string name="password">Contraseña: </string>
     <string name="passwordHint">Contraseña</string>
     <string name="registrarse">Registrarse</string>
+    <string name="nombre">Nombre: </string>
+    <string name="email">eMail: </string>
 </resources>
