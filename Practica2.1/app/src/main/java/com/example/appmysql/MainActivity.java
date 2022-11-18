@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText usuario, contrasena;
-    Button iniciarSesion;
+    Button iniciarSesion, registrarse;
     DBHelper DB;
 
     @Override
@@ -24,7 +24,16 @@ public class MainActivity extends AppCompatActivity {
         usuario = findViewById(R.id.entradaUsuario);
         contrasena = findViewById(R.id.entradaContraseña);
         iniciarSesion = findViewById(R.id.butIniciarSesion);
+        registrarse = findViewById(R.id.butRegistrarse);
         DB = new DBHelper(this);
+
+        registrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Registro.class);
+                startActivity(intent);
+            }
+        });
 
         iniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
                     if (comprobarContrasena){
                         Toast.makeText(MainActivity.this, "Has iniciado sesion correctamente", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Menu.class);
+                        startActivity(intent);
                     }else{
-                        Toast.makeText(MainActivity.this, "Hubo un error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error de usuario o contraseña", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
