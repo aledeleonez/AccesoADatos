@@ -17,7 +17,7 @@
       app:layout_constraintTop_toTopOf="parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_registrarse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -27,7 +27,7 @@
         android:textSize="34sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nombre"
@@ -35,7 +35,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/entrada_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -45,7 +45,7 @@
         android:text="Name" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/logIn"
@@ -53,7 +53,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/entrada_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -63,7 +63,7 @@
         android:text="Name" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/email"
@@ -71,7 +71,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/entrada_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -81,7 +81,7 @@
         android:text="Name" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_contrasena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/password"
@@ -89,7 +89,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/entrada_contrasena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -99,7 +99,7 @@
         android:text="Name" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/but_registrarse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/registrarse" />
