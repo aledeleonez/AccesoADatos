@@ -1,118 +1,46 @@
 package com.example.appmongodb;
 
-
-import com.mongodb.ClientSessionOptions;
-import com.mongodb.client.ChangeStreamIterable;
-import com.mongodb.client.ClientSession;
-import com.mongodb.client.ListDatabasesIterable;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.MongoIterable;
-import com.mongodb.connection.ClusterDescription;
+
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
 
-import java.util.List;
+import java.text.ParseException;
 
 public class MongoDB {
 
-   MongoClient mongoClient = new MongoClient() {
-       @Override
-       public MongoDatabase getDatabase(String databaseName) {
-           return null;
-       }
+    private MongoClient mongoClient;
+    private MongoDatabase db;
 
-       @Override
-       public ClientSession startSession() {
-           return null;
-       }
+    public void conectar(){
+        mongoClient = new MongoClient();
+        db = mongoClient.getDatabase("usuarios");
+    }
 
-       @Override
-       public ClientSession startSession(ClientSessionOptions options) {
-           return null;
-       }
+    public void desconectar(){
+        mongoClient.close();
+    }
 
-       @Override
-       public void close() {
+    public void anadirUsuario(Usuario usuario){
+        Document documento = new Document()
+                .append("nombre", usuario.getNombre())
+                .append("contrasena", usuario.getContrasena())
+                .append("email", usuario.geteMail())
+                .append("usuario", usuario.getUsuario());
+        db.getCollection("usuarios").insertOne(documento);
+    }
 
-       }
+    public void eliminarUsuario(String usuario){
+        db.getCollection("usuarios").deleteOne(new Document("nombre", usuario));
+    }
 
-       @Override
-       public MongoIterable<String> listDatabaseNames() {
-           return null;
-       }
+    public Usuario buscarUsuario(String usuario) throws ParseException {
+        FindIterable<Document> findIterable = db.getCollection("usuarios").find(new Document("usuario", usuario));
+        Document documento = findIterable.first();
+        return buscarUsuario(String.valueOf(documento));
+    }
 
-       @Override
-       public MongoIterable<String> listDatabaseNames(ClientSession clientSession) {
-           return null;
-       }
-
-       @Override
-       public ListDatabasesIterable<Document> listDatabases() {
-           return null;
-       }
-
-       @Override
-       public ListDatabasesIterable<Document> listDatabases(ClientSession clientSession) {
-           return null;
-       }
-
-       @Override
-       public <TResult> ListDatabasesIterable<TResult> listDatabases(Class<TResult> tResultClass) {
-           return null;
-       }
-
-       @Override
-       public <TResult> ListDatabasesIterable<TResult> listDatabases(ClientSession clientSession, Class<TResult> tResultClass) {
-           return null;
-       }
-
-       @Override
-       public ChangeStreamIterable<Document> watch() {
-           return null;
-       }
-
-       @Override
-       public <TResult> ChangeStreamIterable<TResult> watch(Class<TResult> tResultClass) {
-           return null;
-       }
-
-       @Override
-       public ChangeStreamIterable<Document> watch(List<? extends Bson> pipeline) {
-           return null;
-       }
-
-       @Override
-       public <TResult> ChangeStreamIterable<TResult> watch(List<? extends Bson> pipeline, Class<TResult> tResultClass) {
-           return null;
-       }
-
-       @Override
-       public ChangeStreamIterable<Document> watch(ClientSession clientSession) {
-           return null;
-       }
-
-       @Override
-       public <TResult> ChangeStreamIterable<TResult> watch(ClientSession clientSession, Class<TResult> tResultClass) {
-           return null;
-       }
-
-       @Override
-       public ChangeStreamIterable<Document> watch(ClientSession clientSession, List<? extends Bson> pipeline) {
-           return null;
-       }
-
-       @Override
-       public <TResult> ChangeStreamIterable<TResult> watch(ClientSession clientSession, List<? extends Bson> pipeline, Class<TResult> tResultClass) {
-           return null;
-       }
-
-       @Override
-       public ClusterDescription getClusterDescription() {
-           return null;
-       }
-   };
-   MongoDatabase db = mongoClient.getDatabase("usuarios");
 
 }

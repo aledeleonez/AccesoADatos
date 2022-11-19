@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">App MongoDB</string>
+    <string name="app_name">AppMySQL</string>
+    <string name="iniciarSesion">Iniciar Sesión</string>
+    <string name="logIn">Usuario: </string>
+    <string name="logInHint">Usuario</string>
+    <string name="password">Contraseña: </string>
+    <string name="passwordHint">Contraseña</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="nombre">Nombre: </string>
+    <string name="email">eMail: </string>
 </resources>
