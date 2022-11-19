@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         contrasena = findViewById(R.id.entradaContraseña);
         iniciarSesion = findViewById(R.id.butIniciarSesion);
         registrarse = findViewById(R.id.butRegistrarse);
-        DB = new DBHelper(this);
+        DB = new MongoDB();
 
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,18 +42,19 @@ public class MainActivity extends AppCompatActivity {
                 String usr = usuario.getText().toString();
                 String contr = contrasena.getText().toString();
 
-                if (TextUtils.isEmpty(usr) || TextUtils.isEmpty(contr)){
+                if (TextUtils.isEmpty(usr) || TextUtils.isEmpty(contr)) {
                     Toast.makeText(MainActivity.this, "Faltan datos", Toast.LENGTH_SHORT).show();
-                }else{
-                    Boolean comprobarContrasena = DB.comprobarContrasena(usr, contr);
-                    if (comprobarContrasena){
+                } else {
+                    Boolean comprobarContrasena = DB.comprobarUsuario(usr);
+                    if (comprobarContrasena) {
                         Toast.makeText(MainActivity.this, "Has iniciado sesion correctamente", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Menu.class);
                         startActivity(intent);
-                    }else{
+                    } else {
                         Toast.makeText(MainActivity.this, "Error de usuario o contraseña", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
+    }
 }

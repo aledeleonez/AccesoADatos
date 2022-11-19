@@ -3,6 +3,7 @@ package com.example.appmongodb;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.InsertOneResult;
 
 
 import org.bson.Document;
@@ -23,23 +24,32 @@ public class MongoDB {
         mongoClient.close();
     }
 
-    public void anadirUsuario(Usuario usuario){
+    public boolean anadirUsuario(Usuario usuario){
         Document documento = new Document()
                 .append("nombre", usuario.getNombre())
                 .append("contrasena", usuario.getContrasena())
                 .append("email", usuario.geteMail())
                 .append("usuario", usuario.getUsuario());
-        db.getCollection("usuarios").insertOne(documento);
+        InsertOneResult result = db.getCollection("usuarios").insertOne(documento);
+        if(result.wasAcknowledged()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void eliminarUsuario(String usuario){
         db.getCollection("usuarios").deleteOne(new Document("nombre", usuario));
     }
 
-    public Usuario buscarUsuario(String usuario) throws ParseException {
+    public boolean comprobarUsuario(String usuario){
         FindIterable<Document> findIterable = db.getCollection("usuarios").find(new Document("usuario", usuario));
-        Document documento = findIterable.first();
-        return buscarUsuario(String.valueOf(documento));
+        if (findIterable.first().isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+
     }
 
 
