@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(usr) || TextUtils.isEmpty(contr)) {
                     Toast.makeText(MainActivity.this, "Faltan datos", Toast.LENGTH_SHORT).show();
                 } else {
-                    Boolean comprobarContrasena = DB.comprobarUsuario(usr);
+                    Boolean comprobarContrasena = DB.comprobarContrasena(usr, contr);
                     if (comprobarContrasena) {
                         Toast.makeText(MainActivity.this, "Has iniciado sesion correctamente", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Menu.class);

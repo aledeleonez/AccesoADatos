@@ -8,8 +8,6 @@ import com.mongodb.client.result.InsertOneResult;
 
 import org.bson.Document;
 
-import java.text.ParseException;
-
 public class MongoDB {
 
     private MongoClient mongoClient;
@@ -50,6 +48,13 @@ public class MongoDB {
             return true;
         }
 
+    }
+
+    public boolean comprobarContrasena(String usuario, String contrasena){
+        Document documento = new Document().append("usuario", usuario).append("contrasena", contrasena);
+        if(db.getCollection("usuarios").find(documento).first().isEmpty()){
+            return false;
+        }else return true;
     }
 
 
