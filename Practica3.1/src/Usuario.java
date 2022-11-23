@@ -2,16 +2,17 @@
 import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.Table;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "USUARIOS")
+
+@Table(appliesTo = "usuarios")
 public class Usuario implements Serializable {
 
-    @GeneratedValue(generator = "ID")
-    private int id;
+    private Long id;
     private String nombre;
     private String contrasena;
     private String usuario;
@@ -19,7 +20,7 @@ public class Usuario implements Serializable {
 
     public Usuario(){};
 
-    public Usuario(int id, String nombre, String contrasena, String usuario, String email) {
+    public Usuario(Long id, String nombre, String contrasena, String usuario, String email) {
         this.id = id;
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -27,14 +28,18 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idusuarios")
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    @Column(name = "nombre")
     public String getNombre() {
         return nombre;
     }
@@ -43,6 +48,7 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
     }
 
+    @Column(name = "contrasena")
     public String getContrasena() {
         return contrasena;
     }
@@ -51,6 +57,7 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
+    @Column(name = "nomUsuario")
     public String getUsuario() {
         return usuario;
     }
@@ -59,6 +66,7 @@ public class Usuario implements Serializable {
         this.usuario = usuario;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -66,4 +74,5 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
