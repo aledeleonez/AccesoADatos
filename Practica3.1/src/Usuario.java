@@ -1,5 +1,4 @@
 
-import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.Column;
