@@ -1,16 +1,13 @@
-
-import org.hibernate.annotations.Table;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
-
-@Table(appliesTo = "usuarios")
+@Entity
+@Table(name = "usuarios")
 public class Usuario implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idusuarios")
     private Long id;
     private String nombre;
     private String contrasena;

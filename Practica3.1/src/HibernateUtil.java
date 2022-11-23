@@ -1,5 +1,6 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
@@ -15,9 +16,9 @@ public class HibernateUtil {
         configuration.configure();
         configuration.addAnnotatedClass(Usuario.class);
 
-        ServiceRegistry serviceRegistry = (ServiceRegistry) new StandardServiceRegistryBuilder().applySettings(
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
                 configuration.getProperties()).build();
-        sessionFactory= configuration.buildSessionFactory((org.hibernate.service.ServiceRegistry) serviceRegistry);
+        sessionFactory = new Configuration().configure().buildSessionFactory();
     }
 
     public static void openSession() {
